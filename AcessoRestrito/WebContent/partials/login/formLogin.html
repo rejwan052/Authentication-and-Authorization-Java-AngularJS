@@ -1,0 +1,47 @@
+<form  class="login-form"  novalidate="novalidate" >
+			<h3 class="form-title font-green">Login</h3>
+			<div class="alert alert-danger" ng-show="email_senha_show">
+				<button class="close" data-close="alert"></button>
+				<span> Por favor, Digite seu email e senha! </span>
+				
+			</div>
+			<div class="alert alert-danger" ng-show="email_show">
+				<button class="close" data-close="alert"></button>
+				<span> Por favor digite seu email </span>
+				
+			</div>
+			<div class="alert alert-danger" ng-show="senha_show">
+				<button class="close" data-close="alert"></button>
+				<span> Por favor digite sua senha </span>
+			</div>
+			<div class="form-group">
+				<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+				<label class="control-label visible-ie8 visible-ie9">Email</label> <input
+					class="form-control form-control-solid placeholder-no-fix"
+					type="text" autocomplete="off" id="username" ng-model="username"
+					placeholder="Email" name="username" />
+			</div>
+			<div class="form-group">
+				<label class="control-label visible-ie8 visible-ie9">Senha</label> <input
+					class="form-control form-control-solid placeholder-no-fix"
+					type="password" id="password" ng-model="password"
+					autocomplete="off" placeholder="Senha" name="password" />
+			</div>
+			<div class="form-actions" style="border-bottom: 1px solid #fff;">
+				<input type="submit" ng-click="login()" value="Entrar"
+					class="btn green uppercase" /> <label
+					class="rememberme check mt-checkbox mt-checkbox-outline"> 
+					<input type="checkbox" required ng-model="rememberMe" name="remember" value="1" />Continuar
+					conectado <span></span>
+				</label>
+
+			</div>			
+		</form>
+		
+		
+		
+		
+		
+		
+		
+		

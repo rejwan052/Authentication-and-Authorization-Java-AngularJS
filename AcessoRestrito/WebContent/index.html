@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+
+<html ng-app="exampleApp">
+
+
+<head>
+<meta charset="utf-8" />
+<title>Acesso Restrito</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<meta
+	content="Preview page of Metronic Admin Theme #1 for statistics, charts, recent events and reports"
+	name="description" />
+<meta content="" name="author" />
+
+<link
+	href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all"
+	rel="stylesheet" type="text/css" />
+<link
+	href="/AcessoRestrito/resources/assets/global/plugins/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css" />
+<link
+	href="/AcessoRestrito/resources/assets/global/plugins/simple-line-icons/simple-line-icons.min.css"
+	rel="stylesheet" type="text/css" />
+<link
+	href="/AcessoRestrito/resources/assets/global/plugins/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet" type="text/css" />
+
+
+<link
+	href="/AcessoRestrito/resources/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css"
+	rel="stylesheet" type="text/css" />
+
+
+<link
+	href="/AcessoRestrito/resources/assets/global/plugins/datatables/datatables.min.css"
+	rel="stylesheet" type="text/css" />
+<link
+	href="/AcessoRestrito/resources/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css"
+	rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+<link id="ng_load_plugins_css_before">
+
+
+<link href="/AcessoRestrito/resources/assets/toastr.css"
+	rel="stylesheet" type="text/css" />
+
+<link
+	href="/AcessoRestrito/resources/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css"
+	rel="stylesheet" type="text/css" />
+
+
+
+
+<link
+	href="/AcessoRestrito/resources/assets/global/plugins/morris/morris.css"
+	rel="stylesheet" type="text/css" />
+<link
+	href="/AcessoRestrito/resources/assets/global/plugins/fullcalendar/fullcalendar.min.css"
+	rel="stylesheet" type="text/css" />
+
+
+<link
+	href="/AcessoRestrito/resources/assets/global/plugins/jqvmap/jqvmap/jqvmap.css"
+	rel="stylesheet" type="text/css" />
+
+
+<link
+	href="/AcessoRestrito/resources/assets/global/css/components.min.css"
+	rel="stylesheet" id="style_components" type="text/css" />
+<link href="/AcessoRestrito/resources/assets/global/css/plugins.min.css"
+	rel="stylesheet" type="text/css" />
+<link
+	href="/AcessoRestrito/resources/assets/layouts/layout/css/layout.min.css"
+	rel="stylesheet" type="text/css" />
+<link
+	href="/AcessoRestrito/resources/assets/layouts/layout/css/themes/darkblue.min.css"
+	rel="stylesheet" type="text/css" id="style_color" />
+<link
+	href="/AcessoRestrito/resources/assets/layouts/layout/css/custom.min.css"
+	rel="stylesheet" type="text/css" />
+
+
+<link rel="shortcut icon" href="favicon.ico" />
+
+</head>
+
+<body
+	class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
+	<div class="page-wrapper">
+		<div class="page-header navbar navbar-fixed-top">
+			<div class="page-header-inner ">
+				<div class="page-logo">
+					<a href="index.html"> <img
+						src="/AcessoRestrito/resources/assets/layouts/layout/img/logo.png"
+						alt="logo" class="logo-default" />
+					</a>
+					<div class="menu-toggler sidebar-toggler">
+						<span></span>
+					</div>
+				</div>
+				<a href="javascript:;" class="menu-toggler responsive-toggler"
+					data-toggle="collapse" data-target=".navbar-collapse"> <span></span>
+				</a>
+				<div class="top-menu">
+					<ul class="nav navbar-nav pull-right">
+						<li class="dropdown dropdown-user"><a href="javascript:;"
+							class="dropdown-toggle" data-toggle="dropdown"
+							data-hover="dropdown" data-close-others="true"> <i
+								class="fa fa-user fa-5" aria-hidden="true"> <img alt=""
+									class="img-circle" src="" />
+							</i> <span class="username username-hide-on-mobile">
+									{{user.name}} </span> <i class="fa fa-angle-down"></i>
+						</a>
+							<ul class="dropdown-menu dropdown-menu-default">
+
+
+								<li><a ng-click="logout()"> <i class="icon-key"></i>
+										Sair
+								</a></li>
+								<li>
+							</ul></li>
+
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class="clearfix"></div>
+	<div class="page-container">
+		<div class="page-sidebar-wrapper">
+			<div class="page-sidebar navbar-collapse collapse">
+				<ul class="page-sidebar-menu  page-header-fixed "
+					data-keep-expanded="false" data-auto-scroll="true"
+					data-slide-speed="200" style="padding-top: 20px">
+					<li class="sidebar-toggler-wrapper hide">
+						<div class="sidebar-toggler">
+							<span></span>
+						</div>
+					</li>
+					<li class="sidebar-search-wrapper">
+						<form class="sidebar-search  " action="page_general_search_3.html"
+							method="POST">
+							<a href="javascript:;" class="remove"> <i class="icon-close"></i>
+							</a>
+							<div class="input-group">
+
+								<label class="form-control">Menu de Navegação</label>
+
+							</div>
+						</form> <!-- END RESPONSIVE QUICK SEARCH FORM -->
+					</li>
+					<li class="nav-item start active open"><a href="#!/Dashboard"
+						class="nav-link nav-toggle"> <i class="icon-home"></i> <span
+							class="title">Dashboard</span> <span class="selected"></span>
+
+					</a></li>
+					<li ng-show="hasRole('ROLE_ADMIN')" class="nav-item start  open"><a
+						href="javascript:;" class="nav-link nav-toggle"> <i
+							class="icon-home"></i> <span class="title">Area Admin</span> <span></span>
+
+					</a></li>
+					<li ng-show="hasRole('ROLE_USER')" class="nav-item start  open"><a
+						href="javascript:;" class="nav-link nav-toggle"> <i
+							class="icon-home"></i> <span class="title">Area User</span> <span"></span>
+
+					</a></li>
+
+
+
+					<li ng-show="hasRole('ROLE_CONTROLE_ACESSO')" class="nav-item  "><a
+						href="javascript:;" class="nav-link nav-toggle"> <i
+							class="icon-user"></i> <span class="title">Usuário</span> <span
+							class="arrow"></span>
+					</a>
+						<ul class="sub-menu">
+							<li class="nav-item  "><a href="#!/UsuarioConsulta"
+								class="nav-link "> <i class="icon-user"></i> <span
+									class="title">Usuário</span>
+							</a></li>
+							<li class="nav-item  "><a href="#!/ControleAcessoConsulta"
+								class="nav-link "> <i class="icon-lock"></i> <span
+									class="title">Controle de Acesso</span>
+							</a></li>
+
+						</ul></li>
+
+					<li><br> <br>
+						<form action="https://www.paypal.com/cgi-bin/webscr" method="post"
+							target="_top">
+							<input type="hidden" name="cmd" value="_s-xclick"> <input
+								type="hidden" name="encrypted"
+								value="-----BEGIN PKCS7-----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-----END PKCS7-----
+">
+							<input type="image"
+								src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif"
+								border="0" name="submit"
+								alt="PayPal - The safer, easier way to pay online!"> <img
+								alt="" border="0"
+								src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif"
+								width="1" height="1">
+						</form></li>
+				</ul>
+			</div>
+		</div>
+		<div class="page-content-wrapper">
+			<div class="page-content">
+
+				<div ng-view></div>
+
+
+			</div>
+
+
+
+			<a href="javascript:;" class="page-quick-sidebar-toggler"> <i
+				class="icon-login"></i>
+			</a>
+		</div>
+
+
+		<button style="display: none;" type="button" class="btn green"
+			id="showToastSucesso">Show Toast</button>
+
+
+		<div class="page-footer">
+			<div class="page-footer-inner">
+				2017 &copy; Contato <a target="_blank" href="">01fernando.ti@gmail.com</a>
+				&nbsp;|&nbsp; <a href="https://github.com/FernandoUnix"
+					target="_blank"
+					title="Purchase Metronic just for 27$ and get lifetime updates for free"
+					target="_blank">GitHub</a>
+			</div>
+			<div class="scroll-to-top">
+				<i class="icon-arrow-up"></i>
+			</div>
+		</div>
+	</div>
+	<nav class="quick-nav"></nav>
+	<div class="quick-nav-overlay"></div>
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/jquery.min.js"
+		type="text/javascript"></script>
+
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/bootstrap/js/bootstrap.min.js"
+		type="text/javascript"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/js.cookie.min.js"
+		type="text/javascript"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js"
+		type="text/javascript"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/jquery.blockui.min.js"
+		type="text/javascript"></script>
+
+
+
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/jquery-validation/js/jquery.validate.min.js"
+		type="text/javascript"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/jquery-validation/js/additional-methods.min.js"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"
+		type="text/javascript"></script>
+
+
+
+	<script
+		src="/AcessoRestrito/resources/assets/global/scripts/app.min.js"
+		type="text/javascript"></script>
+
+
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/datatables/datatables.all.min.js"
+		type="text/javascript"></script>
+
+	<script
+		src="/AcessoRestrito/resources/assets/pages/scripts/table-datatables-managed.min.js"
+		type="text/javascript"></script>
+
+
+	<script
+		src="/AcessoRestrito/resources/assets/pages/scripts/form-validation.min.js"
+		type="text/javascript"></script>
+
+
+
+
+
+
+
+
+
+
+
+	<script id="ng_load_plugins_before"></script>
+
+	<script src="/AcessoRestrito/resources/assets/toastr.js"
+		type="text/javascript"></script>
+
+
+
+
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/moment.min.js"
+		type="text/javascript"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.js"
+		type="text/javascript"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/morris/morris.min.js"
+		type="text/javascript"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/morris/raphael-min.js"
+		type="text/javascript"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/counterup/jquery.waypoints.min.js"
+		type="text/javascript"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/counterup/jquery.counterup.min.js"
+		type="text/javascript"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/amcharts/amcharts/amcharts.js"
+		type="text/javascript"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/amcharts/amcharts/serial.js"
+		type="text/javascript"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/amcharts/amcharts/pie.js"
+		type="text/javascript"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/amcharts/amcharts/radar.js"
+		type="text/javascript"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/amcharts/amcharts/themes/light.js"
+		type="text/javascript"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/amcharts/amcharts/themes/patterns.js"
+		type="text/javascript"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/amcharts/amcharts/themes/chalk.js"
+		type="text/javascript"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/amcharts/ammap/ammap.js"
+		type="text/javascript"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/amcharts/ammap/maps/js/worldLow.js"
+		type="text/javascript"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/amcharts/amstockcharts/amstock.js"
+		type="text/javascript"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/fullcalendar/fullcalendar.min.js"
+		type="text/javascript"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/horizontal-timeline/horizontal-timeline.js"
+		type="text/javascript"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/flot/jquery.flot.min.js"
+		type="text/javascript"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/flot/jquery.flot.resize.min.js"
+		type="text/javascript"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/flot/jquery.flot.categories.min.js"
+		type="text/javascript"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/jquery-easypiechart/jquery.easypiechart.min.js"
+		type="text/javascript"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/jquery.sparkline.min.js"
+		type="text/javascript"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/jqvmap/jqvmap/jquery.vmap.js"
+		type="text/javascript"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.russia.js"
+		type="text/javascript"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.world.js"
+		type="text/javascript"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.europe.js"
+		type="text/javascript"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.germany.js"
+		type="text/javascript"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/jqvmap/jqvmap/maps/jquery.vmap.usa.js"
+		type="text/javascript"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/jqvmap/jqvmap/data/jquery.vmap.sampledata.js"
+		type="text/javascript"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/pages/scripts/dashboard.min.js"
+		type="text/javascript"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/layouts/layout/scripts/layout.min.js"
+		type="text/javascript"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/layouts/layout/scripts/demo.min.js"
+		type="text/javascript"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/layouts/global/scripts/quick-sidebar.min.js"
+		type="text/javascript"></script>
+	<script
+		src="/AcessoRestrito/resources/assets/layouts/global/scripts/quick-nav.min.js"
+		type="text/javascript"></script>
+
+	<script type="text/javascript"
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
+	<script type="text/javascript"
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-resource.js"></script>
+	<script type="text/javascript"
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.js"></script>
+	<script type="text/javascript"
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-cookies.js"></script>
+
+	<script
+		src="/AcessoRestrito/resources/assets/global/plugins/angularjs/plugins/ocLazyLoad.min.js"
+		type="text/javascript"></script>
+
+	<script type="text/javascript" src="/AcessoRestrito/js/config.js"></script>
+
+
+
+	<script type="text/javascript" src="/AcessoRestrito/js/app.js"></script>
+	<script src="/AcessoRestrito/js/LoginController.js"
+		type="text/javascript"></script>
+	<script src="/AcessoRestrito/js/UsuarioController.js"
+		type="text/javascript"></script>
+
+	<script src="/AcessoRestrito/js/ControleAcesso.js"
+		type="text/javascript"></script>
+
+	<script>
+		$('#showToastSucesso').click(function () {
+	        // make it not dissappear
+	        toastr.success("Operação realizada com sucesso", "Sucesso", {
+	        	  "closeButton": true,
+	        	  "debug": false,
+	        	  "positionClass": "toast-top-right",
+	        	  "onclick": null,
+	        	  "showDuration": "1000",
+	        	  "hideDuration": "1000",
+	        	  "timeOut": "4000",
+	        	  "extendedTimeOut": "1000",
+	        	  "showEasing": "swing",
+	        	  "hideEasing": "linear",
+	        	  "showMethod": "fadeIn",
+	        	  "hideMethod": "fadeOut"
+	        });
+	    });
+
+		</script>
+
+
+
+</body>
+
+</html>
+
+

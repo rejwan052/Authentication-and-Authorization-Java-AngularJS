@@ -1,0 +1,93 @@
+<link
+	href="/AcessoRestrito/resources/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css"
+	rel="stylesheet" type="text/css" />
+
+
+<div class="page-bar">
+	<ul class="page-breadcrumb">
+		<li><a href="">Home</a> <i class="fa fa-circle"></i></li>
+		<li><a href="">Controle de Acesso</a> <i class="fa fa-circle"></i></li>
+		<li><span>Alteração</span></li>
+	</ul>
+
+
+</div>
+<h1 class="page-title">Alteração Controle de Acesso</h1>
+
+
+<div class="row">
+	<div class="col-md-12">
+
+		<div class="portlet light portlet-fit portlet-form bordered">
+
+
+			<div class="portlet-body">
+
+				<form id="form_sample_2" class="form-horizontal">
+					<div class="form-body">
+						<div class="alert alert-danger display-hide">
+							<button class="close" data-close="alert"></button>
+							Erro. Por favor verifique abaixo!.
+						</div>
+						<div class="alert alert-success display-hide">
+							<button class="close" data-close="alert"></button>
+							Sucesso!
+						</div>
+						<div class="form-group" ng-repeat="listaPermissoes in ListaPermissoes">
+							<label class="control-label col-md-3"> </label>
+							<div class="col-md-4">
+								<div class="md-checkbox has-info">
+									<input type="checkbox" id="{{listaPermissoes}}"  class="md-check">
+									<label for="{{listaPermissoes}}"> <span></span> <span
+										class="check"></span> <span class="box"></span> {{listaPermissoes}}
+									</label>
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+					<div class="form-actions">
+						<div class="row">
+							<div class="col-md-offset-3 col-md-9">
+								<button ng-click="Alterar()" type="submit" class="btn green">Alterar</button>
+							</div>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<script
+	src="/AcessoRestrito/resources/assets/pages/scripts/form-validation.min.js"
+	type="text/javascript"></script>
+
+
+<script
+	src="/AcessoRestrito/resources/assets/global/plugins/jquery-validation/js/jquery.validate.min.js"
+	type="text/javascript"></script>
+<script
+	src="/AcessoRestrito/resources/assets/global/plugins/jquery-validation/js/additional-methods.min.js"></script>
+<script
+	src="/AcessoRestrito/resources/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"
+	type="text/javascript"></script>
+
+
+
+<script
+	src="/AcessoRestrito/resources/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js"
+	type="text/javascript"></script>
+
+
+
+
+
+
+
+
+
+
